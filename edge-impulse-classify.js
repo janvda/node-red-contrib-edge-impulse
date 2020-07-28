@@ -1,11 +1,11 @@
 module.exports = function(RED) {
-    function ClassifyNode(config) {
+    function EdgeImpulseClassifyNode(config) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
-            msg.payload = msg.payload.classify();
+            msg.payload = msg.payload.toLowerCase();
             node.send(msg);
         });
     }
-    RED.nodes.registerType("classify",ClassifyNode);
+    RED.nodes.registerType("edge-impulse-classify",EdgeImpulseClassifyNode);
 }

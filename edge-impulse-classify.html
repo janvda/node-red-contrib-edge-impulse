@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    RED.nodes.registerType('classify',{
+    RED.nodes.registerType('edge-impulse-classify',{
         category: 'function',
         color: '#a6bbcf',
         defaults: {
@@ -9,18 +9,18 @@
         outputs:1,
         icon: "file.png",
         label: function() {
-            return this.name||"classify";
+            return this.name||"edge-impulse-classify";
         }
     });
 </script>
 
-<script type="text/html" data-template-name="classify">
+<script type="text/html" data-template-name="edge-impulse-classify">
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
     </div>
 </script>
 
-<script type="text/html" data-help-name="classify">
+<script type="text/html" data-help-name="edge-impulse-classify">
     <p>A node that performs an edge impulse classification.</p>
 </script>
