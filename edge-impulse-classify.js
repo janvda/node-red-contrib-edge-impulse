@@ -1,6 +1,9 @@
 const fs = require("fs"); 
 
 module.exports = function(RED) {
+    "use strict";
+    const fs = require("fs-extra"); 
+
     // based on https://docs.edgeimpulse.com/docs/through-webassembly
 
     // Load the inferencing WebAssembly module
@@ -72,7 +75,7 @@ module.exports = function(RED) {
 
         // set node status based on edge impulse existing on path
         if (fs.existsSync(this.path + "/edge-impulse-standalone.js")){
-            this.status({fill:"green",shape:"dot",text:"edge impulse at path" });
+            this.status({fill:"green",shape:"dot",text:"edge impulse found" });
         } else {
             this.status({fill:"red",shape:"ring",text:"no edge impulse at path:" + this.path});
         }
