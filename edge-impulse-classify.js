@@ -13,7 +13,7 @@ module.exports = function(RED) {
         const node = this;
 
         try {
-            if (!(fs.existsSync(this.edge_impulse_module + ".js"))) throw new Error('no edge impulse add path:' + this.edge_impulse_module + '.js'); 
+            if (!(fs.existsSync(this.edge_impulse_module + ".js"))) throw new Error('no edge impulse at path:' + this.edge_impulse_module + '.js'); 
 
             this.status({fill:"yellow",shape:"dot",text:"loading edge-impulse:" + this.edge_impulse_module });
 
@@ -24,13 +24,15 @@ module.exports = function(RED) {
 
             // Classifier module
             let classifierInitialized = false;
-            Module.onRuntimeInitialized = function() {
+            Module.onRuntimeInitialized = () => {
                 classifierInitialized = true;
+                node.status({fill:"green",shape:"dot",text:"successfully loaded edge-impulse:" + node.edge_impulse_module });
             };
 
             class EdgeImpulseClassifier {
                 _initialized = false;
 
+                /*
                 init() {
                     if (classifierInitialized === true) return Promise.resolve();
 
@@ -42,6 +44,7 @@ module.exports = function(RED) {
                         };
                     });
                 }
+                */
 
                 classify(rawData, debug = false) {
                     if (!classifierInitialized) throw new Error('Module is not initialized');
@@ -79,7 +82,7 @@ module.exports = function(RED) {
 
             // Initialize the classifier
             let classifier = new EdgeImpulseClassifier();
-            classifier.init()
+            /* classifier.init() */
 
             this.on('input', function(msg) {
                 msg.payload = classifier.classify(msg.payload);
