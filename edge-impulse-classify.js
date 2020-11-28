@@ -13,7 +13,7 @@ module.exports = function(RED) {
         const node = this;
 
         try {
-            if (!(fs.existsSync(this.edge_impulse_module + ".js"))){ throw("no edge impulse add path"); }
+            if (!(fs.existsSync(this.edge_impulse_module + ".js"))) throw new Error('no edge impulse add path:' + this.edge_impulse_module + '.js'); 
 
             this.status({fill:"yellow",shape:"dot",text:"loading edge-impulse:" + this.edge_impulse_module });
 
@@ -93,7 +93,7 @@ module.exports = function(RED) {
             });
         }
         catch(err){
-            this.status({fill:"red",shape:"ring",text:"no edge impulse at path:" + this.edge_impulse_module + ".js"}); 
+            this.status({fill:"red",shape:"ring",text:err.message}); 
         }
     }
     RED.nodes.registerType("edge-impulse-classify",EdgeImpulseClassifyNode);
