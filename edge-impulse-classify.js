@@ -13,7 +13,7 @@ module.exports = function(RED) {
         const node = this;
 
         try {
-            if (!(fs.existsSync(this.edge_impulse_module + ".js"))) throw new Error('no edge impulse at path:' + this.edge_impulse_module + '.js'); 
+            if (!(fs.existsSync(this.edge_impulse_module + ".js"))) throw new Error('no edge impulse at location:' + this.edge_impulse_module + '.js'); 
 
             this.status({fill:"yellow",shape:"dot",text:"loading edge-impulse:" + this.edge_impulse_module });
 
@@ -29,27 +29,19 @@ module.exports = function(RED) {
                 node.status({fill:"green",shape:"dot",text:"successfully loaded edge-impulse:" + node.edge_impulse_module });
             };
 
-            class EdgeImpulseClassifier {
-                _initialized = false;
+            function _arrayToHeap(data) {
+                let typedArray = new Float32Array(data);
+                let numBytes = typedArray.length * typedArray.BYTES_PER_ELEMENT;
+                let ptr = Module._malloc(numBytes);
+                let heapBytes = new Uint8Array(Module.HEAPU8.buffer, ptr, numBytes);
+                heapBytes.set(new Uint8Array(typedArray.buffer));
+                return { ptr: ptr, buffer: heapBytes };
+            }
 
-                /*
-                init() {
-                    if (classifierInitialized === true) return Promise.resolve();
-
-                    return new Promise((resolve) => {
-                        Module.onRuntimeInitialized = () => {
-                            resolve();
-                            classifierInitialized = true;
-                            node.status({fill:"green",shape:"dot",text:"successfully loaded edge-impulse:" + node.edge_impulse_module });
-                        };
-                    });
-                }
-                */
-
-                classify(rawData, debug = false) {
+            function _classify(rawData, debug = false) {
                     if (!classifierInitialized) throw new Error('Module is not initialized');
 
-                    const obj = this._arrayToHeap(rawData);
+                    const obj = _arrayToHeap(rawData);
                     let ret = Module.run_classifier(obj.buffer.byteOffset, rawData.length, debug);
                     Module._free(obj.ptr);
 
@@ -68,24 +60,10 @@ module.exports = function(RED) {
                     }
 
                     return jsResult;
-                }
-
-                _arrayToHeap(data) {
-                    let typedArray = new Float32Array(data);
-                    let numBytes = typedArray.length * typedArray.BYTES_PER_ELEMENT;
-                    let ptr = Module._malloc(numBytes);
-                    let heapBytes = new Uint8Array(Module.HEAPU8.buffer, ptr, numBytes);
-                    heapBytes.set(new Uint8Array(typedArray.buffer));
-                    return { ptr: ptr, buffer: heapBytes };
-                }
             }
 
-            // Initialize the classifier
-            let classifier = new EdgeImpulseClassifier();
-            /* classifier.init() */
-
             this.on('input', function(msg) {
-                msg.payload = classifier.classify(msg.payload);
+                msg.payload = _classify(msg.payload);
                 this.send(msg);
             });
 
