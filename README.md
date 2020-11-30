@@ -17,7 +17,7 @@ These impulses can be deployed to various edge devices.  This makes the model ru
 
 ##  "edge-impulse-classify" Node
 
-This node runs an `impulse` on the input payload and outputs the classification and/or anomaly detection.  
+This node runs the `impulse` on the input payload and outputs the classification and/or anomaly detection.  
 E.g. the input can be a fixed length audio fragment, an image,... converted to 1 dimensional array.
 
 Here below an example of the output payload it might produce:
@@ -31,12 +31,7 @@ Here below an example of the output payload it might produce:
 ### Prerequisites
 In order to use this node, an impulse created by [online Edge Impulse studio](https://studio.edgeimpulse.com/) must be [deployed as a Webassembly library](https://docs.edgeimpulse.com/docs/through-webassembly) to a folder that is readable by your Node-RED application. 
 So when the studio builds your WebAssembly package it will download it as a zip file containing 2 files: `edge-impulse-standalone.js` and `edge-impulse-standalone.wasm`.
-
 It is important that you copy these 2 files to a folder that is accessible by your Node-RED application.
-
-You can then "bind" this impulse to an `edge-impulse-classify` node by just specifying the folder location in the `Path` configuration property of the `edge-impulse-classify` node.
-
-Note that there is no need to restart Node-RED when a new impulse is deployed or the `Path` configuration property is updated.  The new impulse will automatically be bound when the flow becomes restarted.
 
 ### Contributing
 
