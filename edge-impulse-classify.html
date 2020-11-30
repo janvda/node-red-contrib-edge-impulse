@@ -28,29 +28,18 @@
 
 <script type="text/html" data-help-name="edge-impulse-classify">
     <p>Performs an "edge impulse" classification and/or anomaly detection.</p>
-    <h3>Prerequisites</h3>
-    <p>The "edge impulse", you (or someone else) have created and trained at <a href="https://www.edgeimpulse.com/">edge impulse</a>, 
-       should be deployed as a WebAssembly library to a folder readable by your Node-RED application.
-    <p>It is easy to download your edge impulse project as a WebAssembly library using the online edge impulse studio: for this you need to select the "Deployment" menu, 
-       then select create "WebAssembly" library and then select "Build".  This will download a zip file consisting of 2 files: <code>edge-impulse-standalone.js</code> and <code>edge-impulse-standalone.wasm</code>.  
-       So these 2 files must be copied to a folder that is accessibly by your Node-RED application.
-    </p>
-    <h3>Configuration</h3>
-    <dl>
-        <dt>path
-            <span class="property-type">string</span>
-        </dt>
-        <dd> This is the folder where you have deployed the "edge impulse" WebAssembly library (see prerequisites).  
-            So it is the folder where your Node-RED application should find the 2 files: <code>edge-impulse-standalone.js</code> and <code>edge-impulse-standalone.wasm</code>
-        </dd>
-    </dl>
     <h3>Inputs</h3>
     <dl class="message-properties">
+        <dt>Path <span class="property-type">configuration property</span>
+        </dt>
+        <dd><p>This is the folder where you have deployed the "edge impulse" WebAssembly library (see Prerequisites).</p>
+            <p>So it is the folder where your Node-RED application should find the 2 files: <code>edge-impulse-standalone.js</code> and <code>edge-impulse-standalone.wasm</code></p>
+        </dd>
         <dt>payload
             <span class="property-type">array</span>
         </dt>
-        <dd> The input array that should be classified. 
-            <p> In case of audio classification it is typically the raw audio format (PCM) 
+        <dd><p>The input array that should be classified.</p>
+            <p>In case of audio classification it is typically the raw audio format (PCM) 
             of the audio fragment that should be classified converted into a javascript array.  
             It is important that this array has exactly the same size as the size of the audio fragments that are used for training the edge impulse.</p>
         </dd>
@@ -68,11 +57,17 @@
             </dl>
         </li>
     </ol>
-    <h3>Details</h3>
-    <p>TO BE DONE</p>
+    <h3>Prerequisites</h3>
+    <p>The "edge impulse", you (or someone else) have created and trained at <a href="https://www.edgeimpulse.com/">edge impulse</a>, 
+       should be deployed as a WebAssembly library to a folder readable by your Node-RED application.
+    <p>It is easy to download your edge impulse project as a WebAssembly library using the online edge impulse studio: for this you need to select the "Deployment" menu, 
+       then select create "WebAssembly" library and then select "Build".  This will download a zip file consisting of 2 files: <code>edge-impulse-standalone.js</code> and <code>edge-impulse-standalone.wasm</code>.  
+       So these 2 files must be copied to a folder that is accessible by your Node-RED application.
+    </p>
     <h3>References</h3>
     <ul>
-        <li><a href="https://www.edgeimpulse.com/">Edge Impulse</a> - Edge Impulse is the leading development platform for machine learning on edge devices, free for developers and trusted by enterprises.</li>
-        <li><a href="https://github.com/janvda/node-red-contrib-edge-impulse">GitHub</a> - the nodes github repository.  Feel free to open new issues.</li>
+        <li><a href="https://www.edgeimpulse.com/">Edge Impulse</a> - is the leading development platform for machine learning on edge devices, free for developers and trusted by enterprises.</li>
+        <li><a href="https://github.com/janvda/node-red-contrib-edge-impulse">GitHub node-red-contrib-edge-impulse</a> - the nodes github repository.  Feel free to open new issues.</li>
+        <li><a href="https://github.com/janvda/node-red-doorbell">GitHub janvda/node-red-doorbell</a> - a project using this node to recognize the ring sound of a doorbell.</li> 
     </ul>
 </script>
