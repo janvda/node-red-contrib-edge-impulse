@@ -13,14 +13,17 @@ An `impulse` typically takes raw data, uses signal processing to extract feature
 * **Transfer Learning (Images)** - Fine tune a pre-trained image model on your data. Good performance even with relatively small image datasets.
 * **K-means anomaly detection** - Find outliers in new data. Good for recognizing unknown states, and to complement neural networks.
 
-These impulses can be deployed to various edge devices.  This makes the model run without an internet connection, minimizes latency, and runs with minimal power consumption.  It is even possible to [deploy it as a WebAssembly library](https://docs.edgeimpulse.com/docs/through-webassembly) which is the basis of the `edge-impulse-classify`.
+These impulses can be deployed to various types of edge devices.  
+This makes the model run without an internet connection, minimizes latency, and runs with minimal power consumption.
+It is even possible to [deploy it as a WebAssembly library](https://docs.edgeimpulse.com/docs/through-webassembly) which is the basis of the `edge-impulse-classify`.
 
-##  "edge-impulse-classify" Node
+## "edge-impulse-classify" Node
 
 This node runs an `impulse` on the input payload and outputs the classification and/or anomaly detection.  
 E.g. the input can be a fixed length audio fragment, an image,... converted to 1 dimensional array.
 
 Here below an example of the output payload it might produce:
+
 ```
 {
  "anomaly":0,
@@ -28,8 +31,10 @@ Here below an example of the output payload it might produce:
             {"label":"ring", "value":0.000016410584066761658}]
 }
 ```
+
 ### Prerequisites
-In order to use this node, an impulse created by [online Edge Impulse studio](https://studio.edgeimpulse.com/) must be [deployed as a Webassembly library](https://docs.edgeimpulse.com/docs/through-webassembly) to a folder that is readable by your Node-RED application. 
+
+In order to use this node, an impulse created by [online Edge Impulse studio](https://studio.edgeimpulse.com/) must be [deployed as a Webassembly library](https://docs.edgeimpulse.com/docs/through-webassembly) to a folder that is readable by your Node-RED application.
 So when the studio builds your WebAssembly package it will download it as a zip file containing 2 files: `edge-impulse-standalone.js` and `edge-impulse-standalone.wasm`.
 
 It is important that you copy these 2 files to a folder that is accessible by your Node-RED application.
