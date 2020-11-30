@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-edge-impulse",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "nodes supporting integration with edge impulse (www.edgeimpulse.com)",
   "main": "edge-impulse-classify.js",
   "scripts": {
