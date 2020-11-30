@@ -9,6 +9,17 @@
   "dependencies": {
     "fs-extra" : "^8.1.0"
   },
+  "keywords": [
+    "node-red",
+    "machine-learning",
+    "neural-network",
+    "edge-ai",
+    "anomaly-detection",
+    "deep-learning",
+    "spectogram",
+    "keras",
+    "edge-impulse"
+  ],
   "author": "Jan Van den Audenaerde",
   "license": "EPL-2.0",
   "node-red" : {
