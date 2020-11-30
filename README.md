@@ -42,7 +42,7 @@ So when the studio builds your WebAssembly package it will download it as a zip 
 
 It is important that you copy these 2 files to a folder that is accessible by your Node-RED application.
 
-You can then "bind" this impulse to an `edge-impulse-classify` node by just specifying the folder location in the `Path` configuration property of your `edge-impulse-classify` node.
+You can then "bind" this impulse to your `edge-impulse-classify` node by just specifying the folder location in the `Path` configuration property of your `edge-impulse-classify` node.
 
 Note that there is no need to restart Node-RED after you have deployed a new impulse or modified the `Path` configuration property.  The new impulse will automatically be "bound" when the flow becomes restarted.
 
