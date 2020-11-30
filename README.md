@@ -44,4 +44,4 @@ Feel free to report an issue to this github repository.
 
 ### License
 
-[the todo license](LICENSE).
+[Eclipse Public License 2.0](LICENSE).
