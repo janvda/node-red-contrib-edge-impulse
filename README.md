@@ -35,13 +35,16 @@ Here below an example of the output payload it might produce:
 ### Prerequisites
 
 In order to use this node, an impulse created by [online Edge Impulse studio](https://studio.edgeimpulse.com/) must be [deployed as a Webassembly library](https://docs.edgeimpulse.com/docs/through-webassembly) to a folder that is readable by your Node-RED application.
-So when the studio builds your WebAssembly package it will download it as a zip file containing 2 files: `edge-impulse-standalone.js` and `edge-impulse-standalone.wasm`.
+So when the studio builds your WebAssembly package it will download it as a zip file containing 2 files:
+
+* `edge-impulse-standalone.js`
+* `edge-impulse-standalone.wasm`.
 
 It is important that you copy these 2 files to a folder that is accessible by your Node-RED application.
 
-You can then "bind" this impulse to an `edge-impulse-classify` node by just specifying the folder location in the `Path` configuration property of the `edge-impulse-classify` node.
+You can then "bind" this impulse to an `edge-impulse-classify` node by just specifying the folder location in the `Path` configuration property of your `edge-impulse-classify` node.
 
-Note that there is no need to restart Node-RED when a new impulse is deployed or the `Path` configuration property is updated.  The new impulse will automatically be bound when the flow becomes restarted.
+Note that there is no need to restart Node-RED after you have deployed a new impulse or modified the `Path` configuration property.  The new impulse will automatically be "bound" when the flow becomes restarted.
 
 ### Contributing
 
