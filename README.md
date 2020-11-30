@@ -24,7 +24,7 @@ E.g. the input can be a fixed length audio fragment, an image,... converted to 1
 
 Here below an example of the output payload it might produce:
 
-```
+```json
 {
  "anomaly":0,
  "results":[{"label":"other","value":0.999983549118042},
@@ -45,7 +45,7 @@ Note that there is no need to restart Node-RED when a new impulse is deployed or
 
 ### Contributing
 
-Feel free to report an issue to this github repository.
+Feel free to report any issue to this github repository.
 
 ### License
 
