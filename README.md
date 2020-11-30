@@ -1,4 +1,4 @@
-Node-RED nodes for Edge Impulse
+Node-RED node for Edge Impulse
 ================================
 
 [Edge Impulse](https://www.edgeimpulse.com/) is the leading development platform for machine learning on edge devices, free for developers and trusted by enterprises.
