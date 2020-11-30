@@ -17,10 +17,11 @@ These impulses can be deployed to various types of edge devices.
 This makes the model run without an internet connection, minimizes latency, and runs with minimal power consumption.
 It is even possible to [deploy it as a WebAssembly library](https://docs.edgeimpulse.com/docs/through-webassembly) which is the basis of the `edge-impulse-classify`.
 
-## "edge-impulse-classify" Node
+## The "edge impulse classify" Node
 
-This node runs an `impulse` on the input payload and outputs the classification and/or anomaly detection.  
-E.g. the input can be a fixed length audio fragment, an image,... converted to 1 dimensional array.
+This node runs an `impulse` on the input payload and outputs the classification and/or anomaly detection.
+
+The input can be a fixed length audio fragment, an image,... converted to 1 dimensional array (e.g. `[140,63,-665,457,-173,-687,...]`)
 
 Here below an example of the output payload it might produce:
 
